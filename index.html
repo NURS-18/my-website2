@@ -4,70 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Посттар мен сілтемелер</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        input, select, button {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .post {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        .post img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .post a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        .post a:hover {
-            text-decoration: underline;
-        }
-        .admin-section {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS файлын қосу -->
 </head>
 <body>
     <div class="container">
@@ -91,43 +28,6 @@
         <div id="posts"></div>
     </div>
 
-    <script>
-        const postForm = document.getElementById('postForm');
-        const postsContainer = document.getElementById('posts');
-
-        // Check if user is admin (simple simulation, replace with real auth logic)
-        const isAdmin = true; // Set to false for users
-
-        if (isAdmin) {
-            document.getElementById('adminSection').style.display = 'block';
-        }
-
-        postForm?.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const title = document.getElementById('title').value;
-            const link = document.getElementById('link').value;
-            const image = document.getElementById('image').files[0];
-            const category = document.getElementById('category').value;
-
-            if (image) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const postHTML = `
-                        <div class="post">
-                            <h2>${title}</h2>
-                            <img src="${event.target.result}" alt="${title}">
-                            <p>Категория: ${category}</p>
-                            <a href="${link}" target="_blank">Сілтемені ашу</a>
-                        </div>
-                    `;
-                    postsContainer.innerHTML += postHTML;
-                };
-                reader.readAsDataURL(image);
-            }
-
-            postForm.reset();
-        });
-    </script>
+    <script src="script.js"></script> <!-- JavaScript файлын қосу -->
 </body>
 </html>
